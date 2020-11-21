@@ -610,33 +610,72 @@ namespace Marasescu_Flaviu_Lab6
 
         private void btnNew3_Click(object sender, RoutedEventArgs e)
         {
+            action = ActionState.New;
 
+            btnNew3.IsEnabled = false;
+            btnEdit3.IsEnabled = false;
+            btnDelete3.IsEnabled = false;
+            btnSave3.IsEnabled = true;
+            btnCancel3.IsEnabled = true;
+            btnPrevious3.IsEnabled = false;
+            btnNext3.IsEnabled = false;
+
+            cmbCustomers.IsEnabled = true;
+            cmbInventory.IsEnabled = true;
         }
 
         private void btnEdit3_Click(object sender, RoutedEventArgs e)
         {
+            action = ActionState.Edit;
 
+            btnNew3.IsEnabled = false;
+            btnEdit3.IsEnabled = false;
+            btnDelete3.IsEnabled = false;
+            btnSave3.IsEnabled = true;
+            btnCancel3.IsEnabled = true;
+            btnPrevious3.IsEnabled = false;
+            btnNext3.IsEnabled = false;
+            cmbCustomers.IsEnabled = true;
+            cmbInventory.IsEnabled = true;
         }
 
         private void btnDelete3_Click(object sender, RoutedEventArgs e)
         {
+            action = ActionState.Delete;
 
+            btnNew3.IsEnabled = false;
+            btnEdit3.IsEnabled = false;
+            btnDelete3.IsEnabled = false;
+            btnSave3.IsEnabled = true;
+            btnCancel3.IsEnabled = true;
+            btnPrevious3.IsEnabled = true;
+            btnNext3.IsEnabled = true;
         }
 
 
         private void btnCancel3_Click(object sender, RoutedEventArgs e)
         {
+            action = ActionState.Nothing;
 
+            btnNew3.IsEnabled = true;
+            btnEdit3.IsEnabled = true;
+            btnDelete3.IsEnabled = true;
+            btnPrevious3.IsEnabled = true;
+            btnNext3.IsEnabled = true;
+            btnSave3.IsEnabled = false;
+            btnCancel3.IsEnabled = false;
+            cmbCustomers.IsEnabled = false;
+            cmbInventory.IsEnabled = false;
         }
 
         private void btnPrevious3_Click(object sender, RoutedEventArgs e)
         {
-
+            customerOrdersViewSource.View.MoveCurrentToPrevious();
         }
 
         private void btnNext3_Click(object sender, RoutedEventArgs e)
         {
-
+            customerOrdersViewSource.View.MoveCurrentToNext();
         }
 
         private void ordersDataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
