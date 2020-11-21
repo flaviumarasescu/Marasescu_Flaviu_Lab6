@@ -538,40 +538,29 @@ namespace Marasescu_Flaviu_Lab6
         private void btnSave3_Click(object sender, RoutedEventArgs e)
         {
             Order order = null;
-
             if (action == ActionState.New)
             {
                 try
                 {
                     Customer customer = (Customer)cmbCustomers.SelectedItem;
                     Inventory inventory = (Inventory)cmbInventory.SelectedItem;
-
                     //instantiem Order entity
                     order = new Order()
                     {
+
                         CustId = customer.CustId,
                         CarId = inventory.CarId
                     };
                     //adaugam entitatea nou creata in context
                     ctx.Orders.Add(order);
-                    BindDataGrid();
                     customerOrdersViewSource.View.Refresh();
                     //salvam modificarile
                     ctx.SaveChanges();
                 }
-                //using System.Data;
                 catch (DataException ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                btnNew3.IsEnabled = true;
-                btnEdit3.IsEnabled = true;
-                btnSave3.IsEnabled = false;
-                btnCancel3.IsEnabled = false;
-                ordersDataGrid.IsEnabled = true;
-                btnPrevious3.IsEnabled = true;
-                btnNext3.IsEnabled = true;
-                
             }
             else
                 if (action == ActionState.Edit)
@@ -584,7 +573,7 @@ namespace Marasescu_Flaviu_Lab6
                     if (editedOrder != null)
                     {
                         editedOrder.CustId = Int32.Parse(cmbCustomers.SelectedValue.ToString());
-                    editedOrder.CarId = Convert.ToInt32(cmbInventory.SelectedValue.ToString());
+                        editedOrder.CarId = Convert.ToInt32(cmbInventory.SelectedValue.ToString());
                         //salvam modificarile
                         ctx.SaveChanges();
                     }
